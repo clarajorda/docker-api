@@ -17,3 +17,9 @@ RUN Rscript -e " \
   install.packages('quanteda'); \ 
   install.packages('data.table'); \ 
   "
+
+VOLUME /api
+
+EXPOSE 8080
+
+ENTRYPOINT ['Rscript', '/api/DedupeAPI.R']
