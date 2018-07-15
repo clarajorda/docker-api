@@ -22,4 +22,4 @@ VOLUME /api
 
 EXPOSE 8080
 
-ENTRYPOINT ['Rscript', '/api/DedupeAPI.R']
+ENTRYPOINT ["Rscript", "/api/DedupeAPI.R"]
