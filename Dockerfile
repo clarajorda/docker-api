@@ -16,6 +16,7 @@ RUN Rscript -e " \
   install.packages('Matrix'); \
   install.packages('quanteda'); \ 
   install.packages('data.table'); \ 
+  install.packages('rjson'); \ 
   "
 
 VOLUME /api
