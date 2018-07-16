@@ -21,6 +21,6 @@ RUN Rscript -e " \
 
 VOLUME /api
 
-EXPOSE 8080
+EXPOSE 8000
 
 ENTRYPOINT ["Rscript", "/api/DedupeAPI.R"]
