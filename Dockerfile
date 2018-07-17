@@ -27,6 +27,7 @@ RUN Rscript -e " \
   "
 
 VOLUME /api
+WORKDIR /api
 
 EXPOSE 8000
 
