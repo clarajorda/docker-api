@@ -1,8 +1,15 @@
 FROM trestletech/plumber
 
-# Install ODBC drivers for MSSQL, Postgress and SQL-Lite 
-RUN apt-get update \ 
- && apt-get install -y unixodbc unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc 
+ADD https://packages.microsoft.com/config/debian/9/prod.list /etc/apt/sources.list.d/mssql-release.list
+ADD https://packages.microsoft.com/keys/microsoft.asc /etc/apt/keys/microsoft.asc
+
+RUN apt-get install -y gnupg2 \
+  && apt-key add /etc/apt/keys/microsoft.asc
+
+# Install Microsoft ODBC Driver 17 for SQL Server
+# https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017
+RUN apt-get update \
+  && ACCEPT_EULA=Y apt-get install -y msodbcsql17 unixodbc unixodbc-dev
 
 RUN Rscript -e " \
   install.packages('RODBC'); \
@@ -22,5 +29,7 @@ RUN Rscript -e " \
 VOLUME /api
 
 EXPOSE 8000
+
+ENV SWAGGER=false
 
 ENTRYPOINT ["Rscript", "/api/DedupeAPI.R"]
