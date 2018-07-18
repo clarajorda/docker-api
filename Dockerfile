@@ -15,6 +15,7 @@ RUN Rscript -e " \
   install.packages('RODBC'); \
   install.packages('RODBCext'); \
   install.packages('stringr'); \
+  install.packages('stringdist'); \
   install.packages('compiler'); \
   install.packages('tools'); \ 
   install.packages('itertools'); \   
