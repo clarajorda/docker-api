@@ -13,6 +13,7 @@ RUN apt-get update \
 
 RUN Rscript -e " \
   install.packages('RODBC'); \
+  install.packages('RODBCext'); \
   install.packages('stringr'); \
   install.packages('compiler'); \
   install.packages('tools'); \ 
